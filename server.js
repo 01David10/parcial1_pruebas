@@ -5,6 +5,8 @@ const cors = require("cors")
 
 const employeesRoutes = require("./src/routes/employees")
 const authRoutes = require("./src/routes/auth")
+const clientsRoutes = require("./src/routes/clients")
+
 
 const app = express()
 
@@ -15,6 +17,7 @@ app.use(express.static("public"))   // 👈 ESTA LÍNEA ES LA CLAVE
 
 app.use("/employees", employeesRoutes)
 app.use("/auth", authRoutes)
+app.use("/clients", clientsRoutes)
 
 const PORT = process.env.PORT || 3000
 
