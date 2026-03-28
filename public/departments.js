@@ -16,11 +16,8 @@ async function loadDepartments() {
   departments.forEach((dep) => {
     const row = document.createElement("tr")
 
-    const createdAt = dep.created_at ? new Date(dep.created_at).toLocaleString() : ""
-
     row.innerHTML = `
       <td>${dep.id}</td>
-      <td>${createdAt}</td>
       <td>${dep.nombre ?? ""}</td>
       <td>${dep.presupuesto ?? ""}</td>
       <td><button class="edit" data-id="${dep.id}">Editar</button></td>
