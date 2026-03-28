@@ -16,11 +16,13 @@ async function loadDepartments() {
   departments.forEach((dep) => {
     const row = document.createElement("tr")
 
+    const createdAt = dep.created_at ? new Date(dep.created_at).toLocaleString() : ""
+
     row.innerHTML = `
       <td>${dep.id}</td>
+      <td>${createdAt}</td>
       <td>${dep.nombre ?? ""}</td>
-      <td>${dep.descripcion ?? ""}</td>
-      <td>${dep.activo ?? ""}</td>
+      <td>${dep.presupuesto ?? ""}</td>
       <td><button class="edit" data-id="${dep.id}">Editar</button></td>
       <td><button class="delete" data-id="${dep.id}">Eliminar</button></td>
     `
@@ -33,6 +35,13 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault()
 
   const data = Object.fromEntries(new FormData(form))
+
+  if (data.presupuesto === "") {
+    data.presupuesto = null
+  } else if (data.presupuesto != null) {
+    const n = Number(data.presupuesto)
+    data.presupuesto = Number.isFinite(n) ? n : null
+  }
 
   if (editingId) {
     await fetch(`${API_URL}/${editingId}`, {
@@ -75,8 +84,7 @@ table.addEventListener("click", async (e) => {
     const department = await response.json()
 
     form.nombre.value = department.nombre ?? ""
-    form.descripcion.value = department.descripcion ?? ""
-    form.activo.value = String(department.activo)
+  form.presupuesto.value = department.presupuesto ?? ""
 
     editingId = id
     window.scrollTo(0, 0)
