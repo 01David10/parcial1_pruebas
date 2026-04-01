@@ -5,6 +5,16 @@ Aplicación **Node.js + Express** conectada a **Supabase (Postgres)**.
 - El **frontend** (HTML/JS/CSS) se sirve como estático desde `public/`
 - El **backend** expone endpoints REST (Express) en `/employees`, `/departments`, `/projects`, `/auth`, etc.
 
+## 📘 Manual de Usuario
+
+Consulta el manual de uso (roles, navegación y módulos):
+
+- [`MANUAL_USUARIO.md`](./MANUAL_USUARIO.md)
+
+## 🧾 Historias de usuario y requisitos
+
+- [`REQUISITOS_E_HU.md`](./REQUISITOS_E_HU.md)
+
 ## ✅ Demo desplegada (Railway)
 
 URL pública:
